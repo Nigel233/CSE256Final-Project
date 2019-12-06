@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Page</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>Demo</h1>
+Demo page
+<br>
+<br>
+  
+  <a class="btn btn-primary" href="/mainPage">Go To Main Page</a>  
+
+<div style="position:relative;left:20px">
+<a class="btn btn-primary" href="{{ url_for('mainPage') }}">Back to main page</a>
+</div>
+</body>
+</html>

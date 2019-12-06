@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSE256 Final Project</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--    <style>-->
+<!--.div1{-->
+<!--    border:2px black;-->
+<!--    background:white;-->
+<!--    color:grey;-->
+<!--}-->
+<!--.button a{-->
+<!--    color:#FF8956;-->
+<!--}-->
+<!--    </style>-->
+<!--    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">-->
+<!--    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>-->
+<!--    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>-->
+<!--    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>-->
+
+    <style>
+/* Custom Styles */
+    ul.nav-tabs{
+        width: 140px;
+        margin-top: 20px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    }
+    ul.nav-tabs li{
+        margin: 0;
+        border-top: 1px solid #ddd;
+    }
+    ul.nav-tabs li:first-child{
+        border-top: none;
+    }
+    ul.nav-tabs li a{
+        margin: 0;
+        padding: 8px 16px;
+        border-radius: 0;
+    }
+    ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+        color: #fff;
+        background: #0088cc;
+        border: 1px solid #0088cc;
+    }
+    ul.nav-tabs li:first-child a{
+        border-radius: 4px 4px 0 0;
+    }
+    ul.nav-tabs li:last-child a{
+        border-radius: 0 0 4px 4px;
+    }
+    ul.nav-tabs.affix{
+        top: 30px; /* Set the top position of pinned element */
+    }
+</style>
+<script>
+$(document).ready(function(){
+    $("#myNav").affix({
+        offset: {
+            top: 125
+      }
+    });
+});
+</script>
+
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<div class="container">
+   <div class="jumbotron">
+        <h1>CSE256 Final Project</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" id="myNav">
+                <li class="active"><a href="#section-1">Project Description</a></li>
+                <li><a href="#section-2">Model Review</a></li>
+                <li><a href="#section-3">Result Show</a></li>
+                <li><a href="#section-4">Demo</a></li>
+                <li><a href="#section-5">Creative Aspect</a></li>
+            </ul>
+        </div>
+<!--<div class="dropdown" style="position: relative; left: 10px">-->
+<!--    <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">=-->
+<!--        <span class="caret"></span>-->
+<!--    </button>-->
+<!--    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">-->
+<!--        <li role="presentation">-->
+<!--            <a role="menuitem" tabindex="-1" href="{{ url_for('modelReview') }}">Model Review</a>-->
+<!--        </li>-->
+<!--        <li role="presentation">-->
+<!--            <a role="menuitem" tabindex="-1" href="{{ url_for('resultShow') }}">Result Show</a>-->
+<!--        </li>-->
+<!--        <li role="presentation">-->
+<!--            <a role="menuitem" tabindex="-1" href="{{ url_for('demoPage') }}">Demo Page</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<div class="col-xs-9">
+            <h2 id="section-1">Project Description</h2>
+          <p>
+              In this project, we implement a hierarchical text classification model. The data we use is 20news dataset.
+              There are 7 general labels and 15 sub-labels. The model we use is CNN. After training process, we can give each
+              text one general label and one sub-label.
+              <br>
+              We have 10000 training data and 7000 test data. The label distribution is showed below.
+          </p>
+          <table class="table">
+          <caption>General Label Distribution</caption>
+          <thead>
+            <tr>
+              <th>label</th>
+              <th>number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>rec</td>
+              <td>2389</td>
+            </tr>
+            <tr>
+              <td>comp</td>
+              <td>2935</td>
+            </tr>
+          <tr>
+              <td>sci</td>
+              <td>2373</td>
+            </tr>
+          <tr>
+              <td>talk</td>
+              <td>1952</td>
+            </tr>
+          <tr>
+              <td>misc</td>
+              <td>584</td>
+            </tr>
+          <tr>
+              <td>alt</td>
+              <td>480</td>
+            </tr>
+          <tr>
+              <td>soc</td>
+              <td>599</td>
+            </tr>
+          </tbody>
+        </table>
+          <br>
+          <br>
+          <table class="table">
+          <caption>Sub Label Distribution</caption>
+          <thead>
+            <tr>
+              <th>label</th>
+              <th>number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>autos</td>
+              <td>594</td>
+            </tr>
+            <tr>
+              <td>motorcycles</td>
+              <td>598</td>
+            </tr>
+          <tr>
+              <td>sport</td>
+              <td>1197</td>
+            </tr>
+          <tr>
+              <td>sys</td>
+              <td>1167</td>
+            </tr>
+          <tr>
+              <td>graphics</td>
+              <td>584</td>
+            </tr>
+          <tr>
+              <td>os</td>
+              <td>591</td>
+            </tr>
+          <tr>
+              <td>windows</td>
+              <td>593</td>
+            </tr>
+          <tr>
+              <td>space</td>
+              <td>593</td>
+            </tr>
+          <tr>
+              <td>med</td>
+              <td>594</td>
+            </tr>
+          <tr>
+              <td>electronics</td>
+              <td>591</td>
+            </tr>
+          <tr>
+              <td>crypt</td>
+              <td>595</td>
+            </tr>
+          <tr>
+              <td>politics</td>
+              <td>1575</td>
+            </tr>
+          <tr>
+              <td>religion-talk</td>
+              <td>377</td>
+            </tr>
+          <tr>
+              <td>forsale</td>
+              <td>584</td>
+            </tr>
+          <tr>
+              <td>atheism</td>
+              <td>480</td>
+            </tr>
+          <tr>
+              <td>religion-soc</td>
+              <td>599</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+          <br>
+          <br>
+          <br>
+    <p>
+              The following image shows the relationship between general labels and sub-labels.
+              </p>
+            <img style="float: left" width="1024" src="/static/256prjLabelRelation.001.jpeg">
+    <hr>
+    <h2 id="section-2">Model Review</h2>
+    <p>
+        The model consists of 2 layer of CNNs. After the first layer of CNN consisted of three different kernel
+        size channels, the model outputs the first layer label. Then the features go through the second similar
+        CNN layer, and outputs the second layer label.
+        <br>
+        The embedding is also a fully connected layer, which gives each text an embedding vector of 128 dimensions. The
+        second fully connected layer is 128*128, which gives the output of the first general label. The second fully
+        connected layer is 128*50, which gives the output of the sub-label.
+        <br>
+        The following image shows the structure of the model.
+        <br>
+
+    </p>
+    <img style="float: left" width="1024" src="/static/256prjModel.jpeg">
+    <hr>
+    <h2 id="section-3">Result Show</h2>
+    <p>
+        The accuracy during training process is shown below:
+    </p>
+    <br>
+    <table class="table">
+          <caption>Accuracy During Training Process</caption>
+          <thead>
+            <tr>
+              <th>step</th>
+              <th>accuracy-1</th>
+                <th>accuracy-2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>35.20</td>
+                <td>22.84</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>58.79</td>
+                <td>38.71</td>
+            </tr>
+          <tr>
+              <td>4</td>
+              <td>74.08</td>
+                <td>62.09</td>
+            </tr>
+          <tr>
+              <td>8</td>
+              <td>79.83</td>
+                <td>71.29</td>
+            </tr>
+          <tr>
+              <td>16</td>
+              <td>81.82</td>
+                <td>74.22</td>
+            </tr>
+          <tr>
+              <td>32</td>
+              <td>82.88</td>
+                <td>75.01</td>
+            </tr>
+          <tr>
+              <td>64</td>
+              <td>79.44</td>
+                <td>70.80</td>
+            </tr>
+          <tr>
+              <td>128</td>
+              <td>84.08</td>
+                <td>77.21</td>
+            </tr>
+          <tr>
+              <td>256</td>
+              <td>84.45</td>
+                <td>76.83</td>
+            </tr>
+          </tbody>
+    </table>
+    <br>
+    <p>
+        Note: 100 batch is one step.
+    </p>
+    <br>
+    <table class="table">
+          <caption>Final Accuracy on Test Set</caption>
+          <thead>
+            <tr>
+              <th>accuracy-1</th>
+                <th>accuracy-2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>84.57</td>
+                <td>76.85</td>
+            </tr>
+          </tbody>
+    </table>
+
+    <p>
+        From the result, we can find that the hierarchical structure can lead to a very good performance on hierarchical label
+        classification. The accuracy increase fast during the first several epoch, and gradually become stable.
+        <br>
+        Here is a picture showing how accuracy increased during training process.
+    </p>
+    <img width="680" src="/static/acc.png">
+    <br>
+    <p>
+        And the loss is showing below:
+    </p>
+    <img width="680" src="/static/loss1.png">
+    <hr>
+    <h2 id="section-4">Demo</h2>
+    <p>
+        Here we post a text field to run our demo.
+    </p>
+
+    <style> 
+      textarea {
+      width: 100%;
+      height: 200px;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      font-size: 16px;
+      resize: none;
+      }
+    </style>
+    <form method="POST"> 
+      <textarea name="textbox">Please type at least 20 words ...</textarea>
+      <button type="submit" name="submit">Submit</button>
+    </form>
+    <br>
+    {% if mes1 %}
+        <p>Predicted Label 1:</p>  <p>{{ mes1 }}</p>
+    {% endif %}
+
+    {% if mes2 %}
+        <p>Predicted Label 2:</p>  <p>{{ mes2 }}</p>
+    {% endif %}
+
+
+    <table class="table">
+      <caption>Instances</caption>
+      <thead>
+        <tr>
+          <th>Succeeded/Failed</th>
+          <th>Text</th>
+          <th>Label 1</th>
+          <th>Label 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Succeed</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: PETCH@gvg47.gvg.tek.com (Chuck) Subject: Daily Verse Lines: 3 Dishonest money dwindles away, but he who gathers money little by little makes it grow. Proverbs 13:11</textarea>
+            </div>
+          <td>soc</td>
+          <td>religion</td>
+        </tr>
+        <tr>
+          <td>Succeed</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: Greg.Reinacker@FtCollins.NCR.COM Subject: Windows On-Line Review uploaded Reply-To: Greg.Reinacker@FtCollinsCO.NCR.COM Organization: NCR Microelectronics, Ft. Collins, CO Lines: 12 I have uploaded the Windows On-Line Review shareware edition to ftp.cica.indiana.edu as pubpcwin3uploadswolrs7.zip. It is an on-line magazine which contains reviews of some shareware products...I grabbed it from the Windows On-Line BBS. - - Greg Reinacker (303) 223-5100 x9289 NCR Microelectronic Products Division VoicePlus 464-9289 2001 Danfield Court Greg.Reinacker@FtCollinsCO.NCR.COM Fort Collins, CO 80525</textarea>
+            </div>
+          <td>comp</td>
+          <td>os</td>
+        </tr>
+        <tr>
+          <td>Succeed</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: PETCH@gvg47.gvg.tek.com (Chuck) Subject: Daily Verse Lines: 3 Dishonest money dwindles away, but he who gathers money little by little makes it grow. Proverbs 13:11 </textarea>
+            </div>
+          <td>soc</td>
+          <td>religion</td>
+        </tr>
+        <tr>
+          <td>Succeed</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: dlb5404@tamuts.tamu.edu (Daryl Biberdorf) Subject: TEXAS HB 1776 - VOTING IS TODAY Organization: Texas A&M University, College Station Lines: 8 Distribution: usa NNTP-Posting-Host: tamuts.tamu.edu I just called Texas' legislative bill tracking service and found out that HB 1776 (Concealed Carry) is scheduled for a floor vote TODAY! Let those phone calls roll in. Daryl Daryl Biberdorf N5GJM d-biberdorf@tamu.edu + Sola Gratia + Sola Fide + Sola Scriptura</textarea>
+            </div>
+          <td>talk</td>
+          <td>politics</td>
+        </tr>
+        <tr>
+          <td>Succeed</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: prb@access.digex.net (Pat) Subject: Re: HST Servicing Mission Scheduled for 11 Days Organization: Express Access Online Communications USA Lines: 14 NNTP-Posting-Host: access.digex.net In article C6A2At.E9z@zoo.toronto.edu henry@zoo.toronto.edu (Henry Spencer) writes: No, the thing is designed to be retrievable, in a pinch. Indeed, this dictated a rather odd design for the solar arrays, since they had to be retractable as well as extendable, and may thus have indirectly contributed to the array-flapping problems. Why not design the solar arrays to be detachable. if the shuttle is going to retunr the HST, what bother are some arrays. just fit them with a quick release. one space walk, or use the second canadarm to remove the arrays. pat</textarea>
+            </div>
+          <td>sci</td>
+          <td>space</td>
+        </tr>
+        <tr>
+          <td>Fail</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: v064mb9k@ubvmsd.cc.buffalo.edu (NEIL B. GANDLER) Subject: Need info on 88-89 Bonneville Organization: University at Buffalo Lines: 10 News-Software: VAXVMS VNEWS 1.41 Nntp-Posting-Host: ubvmsd.cc.buffalo.edu I am a little confused on all of the models of the 88-89 bonnevilles. I have heard of the LE SE LSE SSE SSEI. Could someone tell me the differences are far as features or performance. I am also curious to know what the book value is for prefereably the 89 model. And how much less than book value can you usually get them for. In other words how much are they in demand this time of year. I have heard that the mid-spring early summer is the best time to buy. Neil Gandler </textarea>
+            </div>
+          <td>rec</td>
+          <td>autos</td>
+        </tr>
+        <tr>
+          <td>Fail</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: Rick Miller rick@ee.uwm.edu Subject: X-Face? Organization: Just me. Lines: 17 Distribution: world NNTP-Posting-Host: 129.89.2.33 Summary: Go ahead... swamp me. EEP! I'm not familiar at all with the format of these "X-Face:" thingies, but after seeing them in some folks' headers, I've got to see them (and maybe make one of my own)! I've got "dpg-view" on my Linux box (which displays "uncompressed X-Faces") and I've managed to compile [un]compface too... but now that I'm looking for them, I can't seem to find any X-Face:'s in anyones news headers! :-( Could you, would you, please send me your "X-Face:" header? I know I'll probably get a little swamped, but I can handle it. ...I hope. Rick Miller rick@ee.uwm.edu | ricxjo@discus.mil.wi.us Ricxjo Muelisto Send a postcard, get one back! | Enposxtigu bildkarton kaj vi ricevos alion! RICK MILLER 16203 WOODS MUSKEGO, WIS. 53150 USA </textarea>
+            </div>
+          <td>comp</td>
+          <td>windows</td>
+        </tr>
+        <tr>
+          <td>Fail</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: livesey@solntze.wpd.sgi.com (Jon Livesey) Subject: Re: After 2000 years, can we say that Christian Morality is Organization: sgi Lines: 22 Distribution: world NNTP-Posting-Host: solntze.wpd.sgi.com In article 1993Apr21.141259.12012@st-andrews.ac.uk , nrp@st-andrews.ac.uk (Norman R. Paterson) writes: | In article 1r2m21$8mo@fido.asd.sgi.com livesey@solntze.wpd.sgi.com (Jon Livesey) writes: | In article 1993Apr19.151902.21216@st-andrews.ac.uk , nrp@st-andrews.ac.uk (Norman R. Paterson) writes: Just as well, then, that I'm not claiming that my own moral system is absolute. jon. [list of references stretching from here to Alpha Centauri deleted.] Jon- [and I thought to impress with my references!] Ok, so you don't claim to have an absolute moral system. Do you claim to have an objective one? I'll assume your answer is "yes," apologies if not. I've just spent two solid months arguing that no such thing as an objective moral system exists. jon.</textarea>
+            </div>
+          <td>talk</td>
+          <td>religion</td>
+        </tr>
+        <tr>
+          <td>Fail</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: vicente@cenaath.cena.dgac.fr (Martin VICENTE (CENASID)) Subject: Re: 3D input devices Originator: vicente@milou Keywords: 3d,input,device Organization: C.E.N.A. (Centre d'Etudes de la Navigation Aerienne) Lines: 11 Hello, i'm interested in those devices too. Could also send me your suggestions. Thank in advance. Regards. - Martin VICENTE (E-mail: vicente@cenaath.cena.dgac.fr - Tph: 69 84 56 88) Centre d'Etudes de la Navigation Aerienne o o Div. Support Informatique & Developpement </textarea>
+            </div>
+          <td>comp</td>
+          <td>graphics</td>
+        </tr>
+        <tr>
+          <td>Fail</td>
+          <td style="height:100%">
+            <div style="height:100% !important">
+              <textarea style="resize:none; height:100% !important; width:100% !important" data-ng-model="modelLogin.inpMtext">From: Mike Diack mike-d@staff.tc.umn.edu Subject: Re: Electronic Components etc X-Xxmessage-Id: A7FD05D0F6016515@dialup-slip-1-21.gw.umn.edu X-Xxdate: Fri, 23 Apr 93 02:32:48 GMT Nntp-Posting-Host: dialup-slip-1-21.gw.umn.edu Organization: persian cat & carpet co. X-Useragent: Nuntius v1.1.1d7 Lines: 19 I said Cipher tape drives $10.00 what a SILLY boy i was, now i have zillions of messages like "does that include shipping" "is it scsi" "what rom version is it" "will it work on a maximegalon gargantuabrain 9000" ok, the deal is this - if you live in the twin cities, email me, and set up a time, sure, you can drop round and grab one for a tenner. Else Min order $20 (2 drives) + shipping. No guarantees they are good for any purpose at all (they look newish & clean), no technical negotiations. They are model 525 floppytape, part 960273-639 revision D. 17 pin floppy style connector on the back Else They go in the bin - life is too short for extended negotiations over $10 items :-) cheers Mike.</textarea>
+            </div>
+          <td>misc</td>
+          <td>forsale</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <h2 id="section-5">Creative Aspect</h2>
+    <p>
+        1. We proposed and implemented a novel double layered multifold 
+        supervision CNN for hirarchical text classification.
+    </p>
+    <p>
+        2. We constructed this interactional interface for handy text classifation
+    </p>
+    <br><br><br>
+    <footer id="footer">
+      <div id="footer-inner">
+        <p>&copy; Copyright <a href="#">Xinxin Yan</a> &#124; <a href="#">Yuanzhen Lin</a> &#124; <a href="#">Tianyu Sun</a></p>
+        <div class="clr"></div>
+      </div>
+      <br>
+      <br>
+    </footer>
+</div>
+<br><br>
+</body>
+
+</html>
